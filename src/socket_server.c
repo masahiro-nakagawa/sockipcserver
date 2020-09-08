@@ -10,7 +10,6 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
-#define UNIX_SOCKET_PATH "SNAP_USER_DATA"
 
 // レスポンスの値
 enum {
@@ -48,7 +47,7 @@ int unix_server() {
 
   int response = -1;  // レスポンス考えるの面倒だったので0:OK/1:NGで。
 
-  remove(UNIX_SOCKET_PATH);  // socket作る前に前回のファイルを消しておく。終了処理でやってもいいけど。
+ // remove(UNIX_SOCKET_PATH);  // socket作る前に前回のファイルを消しておく。終了処理でやってもいいけど。
 
   // ソケットアドレス構造体←今回はここがUNIXドメイン用のやつ
   struct sockaddr_un sun, sun_client;
@@ -73,7 +72,7 @@ int unix_server() {
 
   // ソケットアドレス構造体を設定
   sun.sun_family = AF_LOCAL;               // UNIXドメイン
-  strcpy(sun.sun_path, UNIX_SOCKET_PATH);  // UNIXドメインソケットのパスを指定
+  strcpy(sun.sun_path, path);  // UNIXドメインソケットのパスを指定
 
 
   // 上記設定をソケットに紐づける

@@ -27,7 +27,8 @@ apps:
       - network
 
 slots:
-  ipcslot:
+  socket-directory:
     interface: content
     content: socket-directory
-    write: $SNAP_USER_DATA
+    write:
+      - $SNAP_USER_DATA
