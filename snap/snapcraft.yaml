@@ -9,11 +9,10 @@ description: |
   store.
 
 grade: stable # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
+confinement: strict # use 'strict' once you have the right plugs and slots
 
 parts:
   socketipcserver:
-    # See 'snapcraft plugins'
     plugin: cmake
     source: src
     build-packages:
@@ -24,10 +23,10 @@ apps:
   socketipcserver:
     command: tcp_server
     plugs:
-      - network
+      - network-bind
 
 slots:
-  socket-directory:
+  test-content-slot:
     interface: content
     content: socket-directory
     write:
