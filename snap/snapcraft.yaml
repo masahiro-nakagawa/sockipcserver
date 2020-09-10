@@ -22,6 +22,7 @@ parts:
 apps:
   socketipcserver:
     command: tcp_server
+    daemon: simple
     plugs:
       - network-bind
 
@@ -30,4 +31,4 @@ slots:
     interface: content
     content: socket-directory
     write:
-      - $SNAP_USER_DATA
+      - $SNAP_DATA/sockets

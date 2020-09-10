@@ -64,9 +64,9 @@ int unix_server() {
   }
 
 
-  char* path = getenv("SNAP_USER_DATA");
+  char* path = getenv("SNAP_DATA");
   printf("Base path is %s\n",path);
-  strcat(path, "/share.sock");
+  strcat(path, "/sockets/share.sock");
   printf("Complete path is %s\n",path);
    
 
